@@ -1,6 +1,7 @@
 FROM bitnami/minideb:jessie
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV TERM xterm
 
 RUN apt-get update && apt-get --no-install-recommends --no-install-suggests -y install \
     procps \
@@ -13,6 +14,7 @@ RUN apt-get update && apt-get --no-install-recommends --no-install-suggests -y i
     apt-key add dotdeb.gpg && \
     rm dotdeb.gpg && \
     apt-get update && apt-get --no-install-recommends --no-install-suggests -y install \
+    less \
     git \
     mysql-client \
     php7.0-curl \
