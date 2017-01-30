@@ -3,10 +3,10 @@
 ##### These variables need to be adjusted in most repositories #####
 
 # This repo's root import path (under GOPATH).
-PKG := github.com/drud/repo_name
+#PKG := github.com/drud/repo_name
 
 # Docker repo for a push
-DOCKER_REPO ?= drud/docker_repo_name
+DOCKER_REPO ?= drud/php7
 
 # Upstream repo used in the Dockerfile
 UPSTREAM_REPO ?= bitnami/minideb:jessie
