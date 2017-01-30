@@ -1,0 +1,40 @@
+FROM UPSTREAM_REPO
+
+ARG PHP_VERSION=7.0
+ENV PHP_VERSION=$PHP_VERSION
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV TERM xterm
+
+RUN apt-get update && apt-get --no-install-recommends --no-install-suggests -y install \
+    procps \
+    curl \
+    ca-certificates \
+    wget && \
+    echo 'deb http://packages.dotdeb.org jessie all' >> /etc/apt/sources.list && \
+    echo 'deb-src http://packages.dotdeb.org jessie all' >> /etc/apt/sources.list && \
+    wget https://www.dotdeb.org/dotdeb.gpg && \
+    apt-key add dotdeb.gpg && \
+    rm dotdeb.gpg
+RUN bash -x -c "apt-get update && apt-get --no-install-recommends --no-install-suggests -y install \
+    less \
+    git \
+    mysql-client \
+    $PHP_VERSION-curl \
+    $PHP_VERSION-cgi \
+    $PHP_VERSION-cli \
+    $PHP_VERSION-common \
+    $PHP_VERSION-fpm \
+    $PHP_VERSION-gd \
+    $PHP_VERSION-json \
+    $PHP_VERSION-mysql \
+    $PHP_VERSION-mbstring \
+    $PHP_VERSION-xml \
+    $PHP_VERSION-xmlrpc \
+    $PHP_VERSION-mcrypt \
+    $PHP_VERSION-opcache \
+    $PHP_VERSION-soap \
+    $PHP_VERSION-readline && \
+    apt-get autoremove -y && \
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/*"

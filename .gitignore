@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.dockerfile
+.docker_image
+.gitignore
+VERSION.txt
+.container*
+.push*
+linux
+darwin
