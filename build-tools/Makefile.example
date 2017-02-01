@@ -1,21 +1,21 @@
-# Makefile for a standard repo with associated container
+# Makefile for a standard golang repo with associated container
 
 ##### These variables need to be adjusted in most repositories #####
 
 # This repo's root import path (under GOPATH).
-#PKG := github.com/drud/repo_name
+PKG := github.com/drud/repo_name
 
 # Docker repo for a push
-DOCKER_REPO ?= drud/php7
+# DOCKER_REPO ?= drud/docker_repo_name
 
 # Upstream repo used in the Dockerfile
-UPSTREAM_REPO ?= bitnami/minideb:jessie
+# UPSTREAM_REPO ?= full/upstream-docker-repo
 
 # Top-level directories to build
-#SRC_DIRS := files drudapi secrets utils
+SRC_DIRS := files drudapi secrets utils
 
 # Optional to docker build
-DOCKER_ARGS = --build-arg PHP_VERSION=php7.0
+# DOCKER_ARGS =
 
 # VERSION can be set by
   # Default: git tag
@@ -33,9 +33,9 @@ VERSION := $(shell git describe --tags --always --dirty)
 # If you need to override one, import its contents below and comment out the
 # include. That way the base components can easily be updated as our general needs
 # change.
-#include build-tools/makefile_components/base_build_go.mak
-include build-tools/makefile_components/base_build_python-docker.mak
+include build-tools/makefile_components/base_build_go.mak
+#include build-tools/makefile_components/base_build_python-docker.mak
 include build-tools/makefile_components/base_container.mak
 include build-tools/makefile_components/base_push.mak
-#include build-tools/makefile_components/base_test_go.mak
-include build-tools/makefile_components/base_test_python.mak
+include build-tools/makefile_components/base_test_go.mak
+#include build-tools/makefile_components/base_test_python.mak

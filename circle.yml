@@ -1,0 +1,12 @@
+machine:
+    services:
+        - docker
+
+dependencies:
+    pre:
+        - make container
+
+test:
+    override:
+        - make test
+        - docker run -it $(cat .docker_image)  php --version | grep "^PHP 7"
