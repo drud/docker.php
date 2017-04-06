@@ -9,4 +9,3 @@ dependencies:
 test:
     override:
         - make test
-        - docker run -it $(awk {'print $1'} .docker_image)  php --version | grep "^PHP 7"
