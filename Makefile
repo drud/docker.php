@@ -42,4 +42,5 @@ include build-tools/makefile_components/base_test_python.mak
 
 test: container
 	docker run -it --rm $(DOCKER_REPO):$(VERSION)  php --version
+	echo $$?
 	docker run -it --rm $(DOCKER_REPO):$(VERSION)  php --version | grep "^PHP 7"
