@@ -15,7 +15,7 @@ UPSTREAM_REPO ?= bitnami/minideb:jessie
 #SRC_DIRS := files drudapi secrets utils
 
 # Optional to docker build
-DOCKER_ARGS = --build-arg PHP_VERSION=php7.0
+DOCKER_ARGS = --build-arg PHP_VERSION=php7.1
 
 # VERSION can be set by
   # Default: git tag
