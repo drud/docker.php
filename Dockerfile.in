@@ -1,6 +1,6 @@
 FROM UPSTREAM_REPO
 
-ARG PHP_VERSION=7.0
+ARG PHP_VERSION
 ENV PHP_VERSION=$PHP_VERSION
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -10,12 +10,10 @@ RUN apt-get update && apt-get --no-install-recommends --no-install-suggests -y i
     procps \
     curl \
     ca-certificates \
+    apt-transport-https \
     wget && \
-    echo 'deb http://packages.dotdeb.org jessie all' >> /etc/apt/sources.list && \
-    echo 'deb-src http://packages.dotdeb.org jessie all' >> /etc/apt/sources.list && \
-    wget https://www.dotdeb.org/dotdeb.gpg && \
-    apt-key add dotdeb.gpg && \
-    rm dotdeb.gpg
+    wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
+    echo "deb https://packages.sury.org/php/ jessie main" > /etc/apt/sources.list.d/php.list
 RUN bash -x -c "apt-get update && apt-get --no-install-recommends --no-install-suggests -y install \
     less \
     git \
